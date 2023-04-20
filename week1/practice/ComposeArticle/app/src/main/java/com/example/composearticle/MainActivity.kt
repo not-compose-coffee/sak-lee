@@ -13,7 +13,6 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -34,10 +33,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun ComposeArticleApp() {
     val result = rememberArticle(
-        imagePainter = painterResource(id = R.drawable.bg_compose_background),
-        title = stringResource(id = R.string.title_jetpack_compose_tutorial),
-        shortDescription = stringResource(id = R.string.compose_short_desc),
-        longDescription = stringResource(id = R.string.compose_long_desc)
+        Article(
+            imagePainter = painterResource(id = R.drawable.bg_compose_background),
+            title = stringResource(id = R.string.title_jetpack_compose_tutorial),
+            shortDescription = stringResource(id = R.string.compose_short_desc),
+            longDescription = stringResource(id = R.string.compose_long_desc)
+        )
     )
 
     ArticleCard(result.value)
@@ -51,18 +52,15 @@ fun ComposeArticleApp() {
  * */
 @Composable
 fun rememberArticle(
-    imagePainter: Painter,
-    title: String,
-    shortDescription: String,
-    longDescription: String
+    article: Article
 ): MutableState<Article> {
     return remember {
         mutableStateOf(
             Article(
-                imagePainter = imagePainter,
-                title = title,
-                shortDescription = shortDescription,
-                longDescription = longDescription
+                imagePainter = article.imagePainter,
+                title = article.title,
+                shortDescription = article.shortDescription,
+                longDescription = article.longDescription
             )
         )
     }
