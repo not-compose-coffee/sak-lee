@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyCard</string>
+    <string name="title_iv">CardBanner</string>
+    <string name="email">lsls486@gmail.com</string>
+    <string name="github_id">\@AndroidDev</string>
+    <string name="phone_num">+82 010-2856-0994</string>
+    <string name="title_description">Android Developer Practice</string>
+    <string name="name">SAk LEE</string>
+</resources>
