@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -45,6 +46,21 @@ fun ArtSpaceApp(modifier: Modifier = Modifier) {
         ArtSpaceImage()
         Spacer(modifier = Modifier.height(16.dp))
         ArtSpaceInfo()
+        Spacer(modifier = Modifier.height(16.dp))
+        ArtSpaceButton(modifier)
+    }
+}
+
+@Composable
+private fun ArtSpaceButton(modifier: Modifier) {
+    Row(modifier = modifier) {
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Previous")
+        }
+
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "Next")
+        }
     }
 }
 
