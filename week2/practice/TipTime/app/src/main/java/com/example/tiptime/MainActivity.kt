@@ -1,6 +1,5 @@
 package com.example.tiptime
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,9 +8,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateMapOf
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -54,11 +51,11 @@ fun TipTImeScreen() {
 }
 
 
-@SuppressLint("UnrememberedMutableState")
 @Composable
-fun EditNumberField(){
-    var amountInput =mutableStateOf("0")
-    TextField(value = amountInput.value, onValueChange = {amountInput.value = it})
+fun EditNumberField() {
+    var amountInput by remember { mutableStateOf("") }
+
+    TextField(value = amountInput, onValueChange = { amountInput = it })
 }
 
 @Preview(showBackground = true)
