@@ -47,9 +47,10 @@ fun TipTImeScreen() {
     val amount = amountInput.toDoubleOrNull() ?: 0.0
     var tipInput by remember { mutableStateOf("") }
     val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(amount, tipPercent)
+
     val focusManager = LocalFocusManager.current
     var roundUp by remember { mutableStateOf(false) }
+    val tip = calculateTip(amount, tipPercent, roundUp)
     Column(
         modifier = Modifier.padding(32.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -135,10 +136,13 @@ fun RoundTheTipRow(
     }
 }
 
-private fun calculateTip(amount: Double, tipPercent: Double): String {
-    val tip = tipPercent / 100 * amount
+private fun calculateTip(amount: Double, tipPercent: Double,roundUP: Boolean): String {
+    var tip = tipPercent / 100 * amount
+    if (roundUP) tip =kotlin.math.ceil(tip)
     return NumberFormat.getCurrencyInstance().format(tip)
 }
+
+
 
 @Preview(showBackground = true)
 @Composable
