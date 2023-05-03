@@ -3,6 +3,7 @@ package com.example.tiptime
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.gestures.rememberTransformableState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -18,6 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tiptime.ui.theme.TipTimeTheme
+import java.text.NumberFormat
+import java.time.temporal.TemporalAmount
 import javax.net.ssl.KeyStoreBuilderParameters
 
 class MainActivity : ComponentActivity() {
@@ -61,11 +64,16 @@ fun EditNumberField() {
     TextField(
         value = amountInput,
         onValueChange = { amountInput = it },
-        label = { Text(text = stringResource(id = R.string.cost_of_service))},
+        label = { Text(text = stringResource(id = R.string.cost_of_service)) },
         singleLine = true,
         modifier = Modifier.fillMaxWidth(),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
     )
+}
+
+private fun calculateTip(amount: Double, tipPercent: Double = 15.0): String {
+    val tip = tipPercent / 100 * amount
+    return NumberFormat.getCurrencyInstance().format(tip)
 }
 
 @Preview(showBackground = true)
