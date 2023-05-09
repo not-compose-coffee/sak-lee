@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="first_art_title">Paris in the rain</string>
+    <string name="second_art_title">Sailing Under</string>
+    <string name="third_art_title">Saturday Morning</string>
+    <string name="fourth_art_title">Murray</string>
+    <string name="first_art_author">Lee</string>
+    <string name="second_art_author">Sak</string>
+    <string name="third_art_author">Com</string>
+    <string name="fourth_art_author">Pose</string>
+
+</resources>
